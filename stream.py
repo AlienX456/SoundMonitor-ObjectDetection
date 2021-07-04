@@ -47,7 +47,7 @@ if (result):
             decoded_img = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
             img_darknet = Image(decoded_img)
             results = net.detect(img_darknet)
-            dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME') }, 'image_classification': results}
+            dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME')}, 'image_classification': results}
             producer.send(topic=os.getenv['PROCESS_RESULT_EVENT'], value=dataToSend)
         except Exception as e:
             logging.error(e)
