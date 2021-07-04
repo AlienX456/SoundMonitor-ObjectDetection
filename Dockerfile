@@ -7,10 +7,11 @@ RUN apt update &&\
 
 RUN apt-get -y install python3-pip &&\
     python3.8 -m pip install pip
+RUN apt-get -y install libgl1-mesa-dev
+RUN python3.8 -m pip install --upgrade pip
 
 COPY requirements.txt /Yolo/
 
-RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip install numpy==1.20.3
 RUN python3.8 -m pip install -r /Yolo/requirements.txt
 
