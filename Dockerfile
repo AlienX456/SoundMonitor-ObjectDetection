@@ -2,13 +2,13 @@ FROM ubuntu:bionic
 
 RUN apt update &&\
     apt install -y software-properties-common &&\
+    apt-get -y install libgl1-mesa-dev &&\
     add-apt-repository ppa:deadsnakes/ppa &&\
     apt -y install python3.8
 
 RUN apt-get -y install python3-pip &&\
-    python3.8 -m pip install pip
-RUN apt-get -y install libgl1-mesa-dev
-RUN python3.8 -m pip install --upgrade pip
+    python3.8 -m pip install pip &&\
+    python3.8 -m pip install --upgrade pip
 
 COPY requirements.txt /Yolo/
 
