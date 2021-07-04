@@ -1,0 +1,7 @@
+requests==2.25.1
+cython==0.29.23
+numpy==1.20.3
+yolo34py==0.2
+opencv-python==4.5.2.52
+boto3==1.17.71
+kafka-python==2.0.1
