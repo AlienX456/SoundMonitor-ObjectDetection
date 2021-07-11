@@ -1,4 +1,4 @@
-module "object-detection" {
+module "object_detection" {
   
   source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//ecs_s3_kafka_services?ref=2.1.0"
 
