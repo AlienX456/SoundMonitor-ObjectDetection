@@ -1,10 +1,10 @@
-module "noise_level" {
+module "object-detection" {
   
   source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//ecs_s3_kafka_services?ref=2.1.0"
 
   service-name= "${var.service_name}-service"
   family_name = var.service_name
-  cpu= "1024"
+  cpu= "256"
   memory= "512"
   number_of_tasks="1"
 
