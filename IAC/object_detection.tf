@@ -4,7 +4,7 @@ module "noise_level" {
 
   service-name= "${var.service_name}-service"
   family_name = var.service_name
-  cpu= "256"
+  cpu= "1024"
   memory= "512"
   number_of_tasks="1"
 
