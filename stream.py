@@ -14,11 +14,11 @@ logging.getLogger().setLevel(logging.INFO)
 identifier = uuid.uuid4().__str__()
 
 try:
-    logging.info('Started download of model configuration and weights')
-
-    result = YOLOResources.download_yolo_resources()
-
-    logging.info('Downloads of model configuration and weights completed!')
+    # logging.info('Started download of model configuration and weights')
+    #
+    # result = YOLOResources.download_yolo_resources()
+    #
+    # logging.info('Downloads of model configuration and weights completed!')
 
     aws_resorce = AwsS3Resource()
 
