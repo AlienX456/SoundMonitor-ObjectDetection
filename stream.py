@@ -34,8 +34,8 @@ try:
 
 
     logging.info('Starting detector...')
-    net = Detector(bytes("cfg/yolov3.cfg", encoding="utf-8"), bytes("weights/yolov3.weights", encoding="utf-8"), 0,
-                   bytes("data/coco.data", encoding="utf-8"))
+    net = Detector(bytes("./cfg/yolov3.cfg", encoding="utf-8"), bytes("./weights/yolov3.weights", encoding="utf-8"), 0,
+                   bytes("./data/coco.data", encoding="utf-8"))
 
     for message in consumer:
         fileName = message.value.decode(os.environ['ENCODE_FORMAT'])
