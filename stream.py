@@ -53,7 +53,7 @@ try:
                           'image_classification': results}
             finishTime = datetime.now()
             duration = finishTime - startTime
-            logging.info("data send %s", fileName, dataToSend)
+            logging.info("data send %s", dataToSend)
             logging.info("Processing Finished for %s with inference time of %s", fileName, duration.total_seconds())
             producer.send(os.getenv('PROCESS_RESULT_EVENT'), value=dataToSend)
         except Exception as e:
