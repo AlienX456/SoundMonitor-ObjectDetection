@@ -48,10 +48,12 @@ try:
             decoded_img = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
             img_darknet = Image(decoded_img)
             results = net.detect(img_darknet)
-            dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME')},
+            dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME'),
+                                          'location-lat': 0.00000, 'location-lon': 0.00000},
                           'image_classification': results}
             finishTime = datetime.now()
             duration = finishTime - startTime
+            logging.info("data send %s", fileName, dataToSend)
             logging.info("Processing Finished for %s with inference time of %s", fileName, duration.total_seconds())
             producer.send(os.getenv('PROCESS_RESULT_EVENT'), value=dataToSend)
         except Exception as e:
