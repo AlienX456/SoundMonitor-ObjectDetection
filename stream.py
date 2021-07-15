@@ -14,11 +14,6 @@ logging.getLogger().setLevel(logging.INFO)
 identifier = uuid.uuid4().__str__()
 
 try:
-    # logging.info('Started download of model configuration and weights')
-    #
-    # result = YOLOResources.download_yolo_resources()
-    #
-    # logging.info('Downloads of model configuration and weights completed!')
 
     aws_resorce = AwsS3Resource()
 
@@ -27,7 +22,7 @@ try:
                              bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
                              auto_offset_reset='earliest',
                              enable_auto_commit='true',
-                             session_timeout_ms=30000)
+                             session_timeout_ms=40000)
     producer = KafkaProducer(bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
                              value_serializer=lambda x: dumps(x).encode(os.environ['ENCODE_FORMAT']))
 
