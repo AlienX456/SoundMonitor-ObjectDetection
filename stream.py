@@ -6,7 +6,6 @@ import numpy as np
 from json import dumps
 from pydarknet import Detector, Image
 from Resources.AwsS3Resource import AwsS3Resource
-from Resources.YOLOResources import YOLOResources
 from kafka import KafkaConsumer, KafkaProducer
 from datetime import datetime
 
@@ -17,6 +16,10 @@ try:
 
     aws_resorce = AwsS3Resource()
 
+    logging.info('Starting detector...')
+    net = Detector(bytes("./cfg/yolov3.cfg", encoding="utf-8"), bytes("./weights/yolov3.weights", encoding="utf-8"), 0,
+                   bytes("./data/coco.data", encoding="utf-8"))
+
     consumer = KafkaConsumer(os.environ['DATA_UPLOAD_EVENT'],
                              group_id=os.environ['GROUP_ID'],
                              bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
@@ -26,11 +29,6 @@ try:
     producer = KafkaProducer(bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
                              value_serializer=lambda x: dumps(x).encode(os.environ['ENCODE_FORMAT']))
 
-
-
-    logging.info('Starting detector...')
-    net = Detector(bytes("./cfg/yolov3.cfg", encoding="utf-8"), bytes("./weights/yolov3.weights", encoding="utf-8"), 0,
-                   bytes("./data/coco.data", encoding="utf-8"))
 
     for message in consumer:
         fileName = message.value.decode(os.environ['ENCODE_FORMAT'])
