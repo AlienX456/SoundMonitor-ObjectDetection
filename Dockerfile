@@ -16,10 +16,10 @@ COPY requirements.txt /Yolo/
 RUN python3.8 -m pip install numpy==1.20.3
 RUN python3.8 -m pip install -r /Yolo/requirements.txt
 
-RUN wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/yolov3.cfg -P /Yolo/cfg &&\
-    wget https://raw.githubusercontent.com/pjreddie/darknet/master/cfg/coco.data -P /Yolo/data &&\
-    wget https://raw.githubusercontent.com/pjreddie/darknet/master/data/coco.names -P /Yolo/data &&\
-    wget https://pjreddie.com/media/files/yolov3.weights -P /Yolo/weights
+RUN wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/yolov3-custom.cfg -P /Yolo/cfg &&\
+    wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/obj.data -P /Yolo/data &&\
+    wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/obj.names -P /Yolo/data &&\
+    wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/yolov3-custom_final.weights -P /Yolo/weights -O yolov3.weights
 
 COPY ./ /Yolo/
 

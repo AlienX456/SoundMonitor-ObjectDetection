@@ -21,7 +21,7 @@ try:
                              bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
                              auto_offset_reset='earliest',
                              enable_auto_commit='true',
-                             session_timeout_ms=30000)
+                             session_timeout_ms=50000)
     producer = KafkaProducer(bootstrap_servers=[os.environ['KAFKA_BOOTSTRAP_SERVER_ONE']],
                              value_serializer=lambda x: dumps(x).encode(os.environ['ENCODE_FORMAT']))
 
@@ -31,7 +31,7 @@ try:
         logging.info("New IMG arrived ID %s to consumer %s", fileName, identifier)
         try:
             startTime = datetime.now()
-            results = data_cycle.process_audio(fileName)
+            results = data_cycle.process_img(fileName)
             dataToSend = {'device_info': {'data_uuid': fileName, 'index_name': os.getenv('ELASTIC_INDEX_NAME'),
                                           'location-lat': 0.00000, 'location-lon': 0.00000},
                           'image_classification': results}

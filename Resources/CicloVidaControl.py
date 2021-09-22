@@ -9,11 +9,11 @@ class CicloVidaControl:
 
     def __init__(self):
         self.__aws_s3_resource = AwsS3Resource()
-        self.__net = Detector(bytes("./cfg/yolov3.cfg", encoding="utf-8"), bytes("./weights/yolov3.weights", encoding="utf-8"),
+        self.__net = Detector(bytes("./cfg/yolov3-custom.cfg", encoding="utf-8"), bytes("./weights/yolov3-custom_final.weights", encoding="utf-8"),
                        0,
-                       bytes("./data/coco.data", encoding="utf-8"))
+                       bytes("./data/obj.data", encoding="utf-8"))
 
-    def process_audio(self, nombre_archivo):
+    def process_img(self, nombre_archivo):
         img = self.__aws_s3_resource.load_image(nombre_archivo)
         nparray = np.asarray(bytearray(img), dtype="uint8")
         decoded_img = cv2.imdecode(nparray, cv2.IMREAD_COLOR)
