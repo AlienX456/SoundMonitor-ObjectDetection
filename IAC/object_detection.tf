@@ -6,7 +6,7 @@ module "object_detection" {
   device_selector = "cpu"
   memory          = "512"
   number_of_tasks = "1"
-  process-type    = "audio"
+  process-type    = "images"
   mapper_url      = ""
 
   // IAC VARS
