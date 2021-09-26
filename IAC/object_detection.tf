@@ -2,9 +2,9 @@ module "object_detection" {
   source = "git::https://github.com/AlienX456/SoundMonitor-IAC-Infrastructure-Common.git//use-cases/ecs_s3_kafka_services?ref=3.0.7-rc"
 
   // User vars
-  cpu             = "1024"
+  cpu             = "2048"
   device_selector = "cpu"
-  memory          = "2048"
+  memory          = "4096"
   number_of_tasks = "1"
   process-type    = "images"
   mapper_url      = ""
