@@ -4,7 +4,7 @@ module "object_detection" {
   // User vars
   cpu             = "2048"
   device_selector = "cpu"
-  memory          = "4096"
+  memory          = "8192"
   number_of_tasks = "1"
   process-type    = "images"
   mapper_url      = ""
