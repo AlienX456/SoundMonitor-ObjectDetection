@@ -19,7 +19,7 @@ RUN python3.8 -m pip install -r /Yolo/requirements.txt
 RUN wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/yolov3-custom.cfg -P /Yolo/cfg &&\
     wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/obj.data -P /Yolo/data &&\
     wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/obj.names -P /Yolo/data &&\
-    wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/yolov3-custom_final.weights -P /Yolo/weights -O yolov3.weights
+    wget https://github.com/AlienX456/SoundMonitor-ObjectDetection/releases/download/data/yolov3-custom_final.weights -P /Yolo/weights
 
 COPY ./ /Yolo/
 

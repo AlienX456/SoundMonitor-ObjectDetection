@@ -9,7 +9,7 @@ class CicloVidaControl:
 
     def __init__(self):
         self.__aws_s3_resource = AwsS3Resource()
-        self.__net = Detector(bytes("./cfg/yolov3-custom.cfg", encoding="utf-8"), bytes("./weights/yolov3.weights", encoding="utf-8"),
+        self.__net = Detector(bytes("./cfg/yolov3-custom.cfg", encoding="utf-8"), bytes("./weights/yolov3-custom_final.weights", encoding="utf-8"),
                        0,
                        bytes("./data/obj.data", encoding="utf-8"))
 
